@@ -1,0 +1,10 @@
+{
+  "apiVersion": 2,
+  "name": "wp-agent-ai/generator",
+  "title": "WP Agent AI Generator",
+  "category": "widgets",
+  "icon": "admin-site",
+  "description": "Generate AI content inside the editor.",
+  "editorScript": "file:./index.js",
+  "editorStyle": "file:./editor.scss"
+}
