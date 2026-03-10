@@ -1,30 +1,27 @@
 <?php
 /**
- * Plugin Name:       Wp Agent Ai
- * Description:       Display your site&#39;s copyright date.
- * Version:           0.1.0
- * Requires at least: 6.8
- * Requires PHP:      7.4
- * Author:            The WordPress Contributors
- * License:           GPL-2.0-or-later
- * License URI:       https://www.gnu.org/licenses/gpl-2.0.html
- * Text Domain:       wp-agent-ai
- *
- * @package           create-block
+ * Plugin Name: WP Agent AI
+ * Description: AI-powered content generator for Gutenberg
+ * Version: 1.0.0
+ * Author: Tejas
+ * Text Domain: wp-agent-ai
  */
 
-if ( ! defined( 'ABSPATH' ) ) {
-	exit; // Exit if accessed directly.
+defined('ABSPATH') || exit;
+
+define('WP_AGENT_AI_VERSION', '1.0.0');
+define('WP_AGENT_AI_PATH', plugin_dir_path(__FILE__));
+define('WP_AGENT_AI_URL', plugin_dir_url(__FILE__));
+
+// Load Settings class
+require_once WP_AGENT_AI_PATH . 'includes/class-settings.php';
+
+// Initialize settings only in admin
+if ( is_admin() ) {
+    new WP_Agent_AI_Settings();
 }
 
-/**
- * Registers the block using the metadata loaded from the `block.json` file.
- * Behind the scenes, it registers also all assets so they can be enqueued
- * through the block editor in the corresponding context.
- *
- * @see https://developer.wordpress.org/reference/functions/register_block_type/
- */
-function create_block_wp_agent_ai_init() {
-	register_block_type( __DIR__ . '/build' );
-}
-add_action( 'init', 'create_block_wp_agent_ai_init' );
+// Register block
+add_action('init', function() {
+    register_block_type(WP_AGENT_AI_PATH . 'build/block');
+});

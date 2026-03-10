@@ -1,42 +1,49 @@
 <?php
 // This file is generated. Do not modify it manually.
 return array(
-	'build' => array(
+	'block' => array(
 		'$schema' => 'https://schemas.wp.org/trunk/block.json',
 		'apiVersion' => 3,
-		'name' => 'create-block/wp-agent-ai',
-		'version' => '0.1.0',
-		'title' => 'Wp Agent Ai',
+		'name' => 'wp-agent-ai/content-generator',
+		'version' => '1.0.0',
+		'title' => 'AI Content Generator',
 		'category' => 'widgets',
-		'description' => 'Display your site\'s copyright date.',
-		'example' => array(
-			
-		),
+		'description' => 'Generate AI-powered content directly in the editor.',
+		'textdomain' => 'wp-agent-ai',
 		'attributes' => array(
-			'fallbackCurrentYear' => array(
-				'type' => 'string'
+			'prompt' => array(
+				'type' => 'string',
+				'default' => ''
 			),
-			'showStartingYear' => array(
-				'type' => 'boolean'
+			'contentType' => array(
+				'type' => 'string',
+				'default' => 'paragraph'
 			),
-			'startingYear' => array(
-				'type' => 'string'
+			'tone' => array(
+				'type' => 'string',
+				'default' => 'professional'
+			),
+			'length' => array(
+				'type' => 'string',
+				'default' => 'medium'
+			),
+			'generatedContent' => array(
+				'type' => 'string',
+				'default' => ''
+			),
+			'isLoading' => array(
+				'type' => 'boolean',
+				'default' => false
+			),
+			'errorMessage' => array(
+				'type' => 'string',
+				'default' => ''
 			)
 		),
 		'supports' => array(
-			'color' => array(
-				'background' => false,
-				'text' => true
-			),
-			'html' => false,
-			'typography' => array(
-				'fontSize' => true
-			)
+			'html' => false
 		),
-		'textdomain' => 'wp-agent-ai',
 		'editorScript' => 'file:./index.js',
-		'editorStyle' => 'file:./index.css',
-		'style' => 'file:./style-index.css',
-		'render' => 'file:./render.php'
+		'editorStyle' => 'file:./editor.scss'
 	)
 );

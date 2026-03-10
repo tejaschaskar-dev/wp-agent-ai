@@ -31,3 +31,9 @@ if ( isset( $attributes['fallbackCurrentYear'] ) && $attributes['fallbackCurrent
 }
 
 echo wp_kses_post( $block_content );
+
+
+<?php
+$attributes = $attributes ?? [];
+$content = $attributes['content'] ?? '';
+echo '<p>' . esc_html($content) . '</p>';
